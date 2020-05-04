@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileRebound : MonoBehaviour
 {
     public float projectileSpeed = 10.0f;
+    public GameObject currentProjectile;
+
     private int numberOfRebounds = 0;
 
     private void Start()
@@ -18,6 +20,6 @@ public class ProjectileRebound : MonoBehaviour
         numberOfRebounds += 1;
 
         if (numberOfRebounds >= 2)
-            GetComponent<MeshRenderer>().enabled = false;
+            currentProjectile.gameObject.SetActive(false); 
     }
 }

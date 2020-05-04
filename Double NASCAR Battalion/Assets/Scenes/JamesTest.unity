@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 25
+  currentProjectile: {fileID: 1381090042}
 --- !u!54 &1381090048
 Rigidbody:
   m_ObjectHideFlags: 0
