@@ -17,10 +17,9 @@ public class Turret : MonoBehaviour
 
 	[Tooltip("How long it takes to reload")]
 	public float m_reloadTime = 3.00f;
-	[Tooltip("How long it takes to reload while rapidfire is active")]
-	public float m_rapidFireReloadTime = 1.00f;
-
+	[Tooltip("How long it takes to fire the next shot")]
 	public float m_shotDelay = 0.3f;
+
 	//Timer for the reload
 	float m_reloadTimer;
 	float m_shotTimer;
@@ -36,18 +35,32 @@ public class Turret : MonoBehaviour
 
 	GameObject[] m_objectArray = new GameObject[m_ammoCount];
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         for(int i = 0; i < m_ammoCount; ++i)
 		{
 			m_objectArray[i] = Instantiate(m_bullet, m_ammoPool) as GameObject;
 			m_objectArray[i].SetActive(false);
+
 			if(m_objectArray[i].TryGetComponent(out Bullet bullet))
 			{
 				bullet.m_turret = gameObject.transform;
+				bullet.m_player = gameObject.GetComponentInParent<Collider>();
+				Physics.IgnoreCollision(gameObject.GetComponentInParent<Collider>(), bullet.m_collider);
 			}
 		}
     }
+
+	void Start()
+	{
+		for(int i = 0; i < m_ammoCount; ++i)
+		{
+			for ( int j = 0; j < m_ammoCount; ++j)
+			{
+				Physics.IgnoreCollision(m_objectArray[i].GetComponent<Collider>(), m_objectArray[j].GetComponent<Collider>());
+			}
+		}
+	}
 
     // Update is called once per frame
     void Update()
@@ -61,6 +74,7 @@ public class Turret : MonoBehaviour
 					if (XCI.GetButtonDown(XboxButton.RightBumper, (XboxController)m_playerID))
 					{
 						m_objectArray[m_ammoFired].SetActive(true);
+						m_objectArray[m_ammoFired].GetComponent<Bullet>().OnFired();
 						++m_ammoFired;
 						m_shotTimer = 0.0f;
 						print("Fired " + m_ammoFired);
@@ -95,6 +109,5 @@ public class Turret : MonoBehaviour
 				transform.rotation = Quaternion.LookRotation(m_lookDirection);
 			}
 		}
-		print(m_shotTimer);
-    }
+	}
 }

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4250718277990151711}
   - component: {fileID: 7230833485326928797}
   - component: {fileID: 3888140436050563661}
+  - component: {fileID: 1376064973602041262}
   m_Layer: 0
   m_Name: RocketScripted
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2504357411554247363}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.011842156, y: 5.8578506, z: 13.9907255}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,6 +109,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0fb6409a8ed8243be976cdc4d0b245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletSpeed: 50
-  m_spawnDistanceFromTurretPivot: {x: 0, y: 5.9, z: 0}
+  m_bulletSpeed: 10
+  m_fireHeight: 2
+  m_rocketOffset: 5
+  m_fired: 0
   m_turret: {fileID: 0}
+  m_player: {fileID: 0}
+  m_collider: {fileID: 0}
+--- !u!65 &1376064973602041262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2504357411554247363}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 171.00238, y: 180.86423, z: 615.66064}
+  m_Center: {x: 0, y: 0, z: 0}
