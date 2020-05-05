@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8343900062924315324}
   m_Layer: 0
-  m_Name: Car 1
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9034565736415108157}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: -15}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
@@ -109,6 +109,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 143f3bc1a37c92b46a144ba0a0dc523d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c368c035deca8614fb2efdf56e0c0a25, type: 2}
     - target: {fileID: -927199367670048503, guid: 143f3bc1a37c92b46a144ba0a0dc523d,
         type: 3}
       propertyPath: m_Name
@@ -199,6 +204,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: e77e80721971e9a4eb089ae252aef92f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 078805cc08ffd0f48a06198c240e5436, type: 2}
     - target: {fileID: -927199367670048503, guid: e77e80721971e9a4eb089ae252aef92f,
         type: 3}
       propertyPath: m_Name
