@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour
 	public void OnFired()
 	{
 		m_rb.angularVelocity = Vector3.zero;
-		transform.rotation = Quaternion.LookRotation(m_turret.forward);
+		transform.rotation = Quaternion.LookRotation(m_rb.velocity);
 		transform.position = m_turret.position + m_distanceFromPivot + (m_turret.forward * m_rocketOffset);
 		m_rb.velocity = m_turret.forward * m_bulletSpeed;
 	}
@@ -82,5 +82,6 @@ public class Bullet : MonoBehaviour
 			other.gameObject.SetActive(false);
 			gameObject.SetActive(false);
 		}
+		gameObject.SetActive(false);
 	}
 }
