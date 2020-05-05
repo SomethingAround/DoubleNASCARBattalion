@@ -5,6 +5,9 @@ using XboxCtrlrInput;
 
 public class Turret : MonoBehaviour
 {
+	[HideInInspector]
+	public bool m_rapidFire = false;
+
 	[Tooltip("Which controller the player will be")]
 	public int m_playerID = 2;
 
@@ -14,8 +17,13 @@ public class Turret : MonoBehaviour
 
 	[Tooltip("How long it takes to reload")]
 	public float m_reloadTime = 3.00f;
+	[Tooltip("How long it takes to reload while rapidfire is active")]
+	public float m_rapidFireReloadTime = 1.00f;
+
+	public float m_shotDelay = 0.3f;
 	//Timer for the reload
 	float m_reloadTimer;
+	float m_shotTimer;
 
 	Vector3 m_lookDirection = Vector3.zero;
 
@@ -34,6 +42,10 @@ public class Turret : MonoBehaviour
 		{
 			m_objectArray[i] = Instantiate(m_bullet, m_ammoPool) as GameObject;
 			m_objectArray[i].SetActive(false);
+			if(m_objectArray[i].TryGetComponent(out Bullet bullet))
+			{
+				bullet.m_turret = gameObject.transform;
+			}
 		}
     }
 
@@ -44,11 +56,19 @@ public class Turret : MonoBehaviour
 		{
 			if (m_ammoFired != m_ammoCount)
 			{
-				if (XCI.GetButtonDown(XboxButton.RightBumper, (XboxController)m_playerID))
+				if (m_shotTimer >= m_shotDelay)
 				{
-					m_objectArray[m_ammoFired].SetActive(true);
-					++m_ammoFired;
-					print("Fired " + m_ammoFired);
+					if (XCI.GetButtonDown(XboxButton.RightBumper, (XboxController)m_playerID))
+					{
+						m_objectArray[m_ammoFired].SetActive(true);
+						++m_ammoFired;
+						m_shotTimer = 0.0f;
+						print("Fired " + m_ammoFired);
+					}
+				}
+				else
+				{
+					m_shotTimer += Time.deltaTime;
 				}
 			}
 			else
@@ -61,7 +81,7 @@ public class Turret : MonoBehaviour
 					m_reloadTimer = 0;
 					for(int i = 0; i < m_ammoCount; ++i)
 					{
-						if (m_objectArray[i].activeSelf == false)
+						if (m_objectArray[i].activeSelf == true)
 						{
 							m_objectArray[i].SetActive(false);
 						}
@@ -75,5 +95,6 @@ public class Turret : MonoBehaviour
 				transform.rotation = Quaternion.LookRotation(m_lookDirection);
 			}
 		}
+		print(m_shotTimer);
     }
 }
