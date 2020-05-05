@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         if (XCI.IsPluggedIn(playerID))
         {
-            if (XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID) != 0 || XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID) != 0)
+            if (XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID) != 0 || XCI.GetAxis(XboxAxis.LeftStickY, (XboxController)playerID) != 0)
             {
                 Vector3 inputDirection = new Vector3(XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID), 0, XCI.GetAxis(XboxAxis.LeftStickY, (XboxController)playerID));
                 inputDirection.Normalize();
