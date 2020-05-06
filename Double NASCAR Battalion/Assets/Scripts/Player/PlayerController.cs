@@ -97,7 +97,6 @@ public class PlayerController : MonoBehaviour
 			transform.position = startPosition;
 			rb.velocity = Vector3.zero;
 			health = 4;
-			pointsText.text = points.ToString();
 		}
 
 		rb.angularVelocity = Vector3.zero;

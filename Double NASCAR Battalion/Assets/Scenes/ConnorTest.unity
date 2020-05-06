@@ -461,6 +461,7 @@ MonoBehaviour:
   healthTime: 3
   rapidfireTime: 3
   points: 0
+  pointsText: {fileID: 0}
 --- !u!114 &1725169331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +709,7 @@ MonoBehaviour:
   healthTime: 3
   rapidfireTime: 3
   points: 0
+  pointsText: {fileID: 2102717132}
 --- !u!114 &2102717132
 MonoBehaviour:
   m_ObjectHideFlags: 0
