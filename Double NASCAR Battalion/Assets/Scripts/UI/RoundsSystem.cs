@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RoundsSystem : MonoBehaviour
 {
     float currentTime = 0.0f;
-    float startingTime = 5.0f;
+    float startingTime = 90f;
 
     int numberOfRounds = 3;
     int currentRound = 1;
