@@ -21,18 +21,20 @@ public class PlayerController : MonoBehaviour
 	float rapidfireTimer;
 	[Tooltip("Time till the rapidfire pickup respawns")]
 	public float rapidfireTime = 3.0f;
-
-	Vector3 startPosition;
+	[HideInInspector]
+	public Vector3 startPosition;
 
 	bool healthPickedUped;
 
 	bool rapidfirePickedUped;
+	[HideInInspector]
+	public bool gameActive;
 
 	GameObject healthPickUp;
 
 	GameObject rapidfirePickUp;
-
-	Turret turret;
+	[HideInInspector]
+	public Turret turret;
 
     private Rigidbody rb;
 
@@ -51,55 +53,58 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (XCI.IsPluggedIn(playerID))
-        {
-            if (XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID) != 0 || XCI.GetAxis(XboxAxis.LeftStickY, (XboxController)playerID) != 0)
-            {
-                Vector3 inputDirection = new Vector3(XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID), 0, XCI.GetAxis(XboxAxis.LeftStickY, (XboxController)playerID));
-                inputDirection.Normalize();
-
-                rb.transform.localRotation = Quaternion.LookRotation(inputDirection, Vector3.up);
-                rb.velocity = transform.forward * playerSpeed;
-            }
-        }
-
-		if(health > maxHealth)
+		if (gameActive)
 		{
-			health = maxHealth;
-		}
+			if (XCI.IsPluggedIn(playerID))
+			{
+				if (XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID) != 0 || XCI.GetAxis(XboxAxis.LeftStickY, (XboxController)playerID) != 0)
+				{
+					Vector3 inputDirection = new Vector3(XCI.GetAxis(XboxAxis.LeftStickX, (XboxController)playerID), 0, XCI.GetAxis(XboxAxis.LeftStickY, (XboxController)playerID));
+					inputDirection.Normalize();
 
-		if(rapidfirePickedUped)
-		{
-			rapidfireTimer += Time.deltaTime;
-		}
+					rb.transform.localRotation = Quaternion.LookRotation(inputDirection, Vector3.up);
+					rb.velocity = transform.forward * playerSpeed;
+				}
+			}
 
-		if(healthPickedUped)
-		{
-			healthTimer += Time.deltaTime;
-		}
+			if (health > maxHealth)
+			{
+				health = maxHealth;
+			}
 
-		if(healthTimer >= healthTime)
-		{
-			healthPickedUped = false;
-			healthPickUp.SetActive(true);
-			healthTimer = 0.0f;
-		}
+			if (rapidfirePickedUped)
+			{
+				rapidfireTimer += Time.deltaTime;
+			}
 
-		if (rapidfireTimer >= rapidfireTime)
-		{
-			rapidfirePickedUped = false;
-			rapidfirePickUp.SetActive(true);
-			rapidfireTimer = 0.0f;
-		}
+			if (healthPickedUped)
+			{
+				healthTimer += Time.deltaTime;
+			}
 
-		if(health <= 0)
-		{
-			transform.position = startPosition;
-			rb.velocity = Vector3.zero;
-			health = 4;
-		}
+			if (healthTimer >= healthTime)
+			{
+				healthPickedUped = false;
+				healthPickUp.SetActive(true);
+				healthTimer = 0.0f;
+			}
 
-		rb.angularVelocity = Vector3.zero;
+			if (rapidfireTimer >= rapidfireTime)
+			{
+				rapidfirePickedUped = false;
+				rapidfirePickUp.SetActive(true);
+				rapidfireTimer = 0.0f;
+			}
+
+			if (health <= 0)
+			{
+				transform.position = startPosition;
+				rb.velocity = Vector3.zero;
+				health = 4;
+			}
+			pointsText.text = points.ToString();
+			rb.angularVelocity = Vector3.zero;
+		}
 	}
 
 	private void OnTriggerEnter(Collider other)
