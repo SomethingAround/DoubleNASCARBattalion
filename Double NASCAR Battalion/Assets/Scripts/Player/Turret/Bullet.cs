@@ -60,6 +60,9 @@ public class Bullet : MonoBehaviour
 		{
 			gameObject.SetActive(false);
 			other.gameObject.GetComponent<PlayerController>().health -= m_bulletDamage;
+
+			if (other.gameObject.GetComponent<PlayerController>().health <= 0)
+				m_player.points++;
 		}
 		gameObject.SetActive(false);
 	}

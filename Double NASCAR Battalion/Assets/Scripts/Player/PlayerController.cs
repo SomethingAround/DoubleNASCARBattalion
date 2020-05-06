@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,12 +36,17 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+	public int points;
+	Text pointsText;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 		turret = gameObject.GetComponentInChildren<Turret>();
 		health = maxHealth;
 		startPosition = transform.position;
+		points = 0;
+		pointsText.text = points.ToString();
     }
 
     private void Update()
@@ -90,6 +96,8 @@ public class PlayerController : MonoBehaviour
 		{
 			transform.position = startPosition;
 			rb.velocity = Vector3.zero;
+			health = 4;
+			pointsText.text = points.ToString();
 		}
 
 		rb.angularVelocity = Vector3.zero;
