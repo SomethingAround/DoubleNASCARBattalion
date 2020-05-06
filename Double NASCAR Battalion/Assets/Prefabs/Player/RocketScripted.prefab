@@ -28,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2504357411554247363}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.51946783, z: 0, w: 0.85449004}
+  m_LocalPosition: {x: -10.561199, y: 5, z: -23.698467}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1130138847572456373, guid: bc0c4f5c0da4c9445a142c2bebb20c3d, type: 3}
+  - {fileID: 2100000, guid: 32630d53a23af7144869adc859f7d668, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0fb6409a8ed8243be976cdc4d0b245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_bulletDamage: 1
   m_bulletSpeed: 75
   m_fireHeight: 2
   m_rocketOffset: 5
