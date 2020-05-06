@@ -65,6 +65,7 @@ public class Bullet : MonoBehaviour
 			{
 				m_player.points++;
 				m_player.health = 4;
+				m_player.pointsText.text = m_player.points.ToString();
 			}
 		}
 		gameObject.SetActive(false);
