@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 52ac8e52904447e47bf66f6954844615,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.25881857
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 52ac8e52904447e47bf66f6954844615,
         type: 3}
@@ -100,7 +100,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 52ac8e52904447e47bf66f6954844615,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.96592593
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 52ac8e52904447e47bf66f6954844615,
         type: 3}
@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 52ac8e52904447e47bf66f6954844615,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -30.000002
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 52ac8e52904447e47bf66f6954844615,
         type: 3}
@@ -146,6 +146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mesh_truck
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 52ac8e52904447e47bf66f6954844615,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52ac8e52904447e47bf66f6954844615, type: 3}
@@ -247,6 +252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mesh_trailer
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6ed621aed2f77e44eb012e72dd43f0b2,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ed621aed2f77e44eb012e72dd43f0b2, type: 3}
