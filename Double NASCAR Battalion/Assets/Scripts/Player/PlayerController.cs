@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
 	public int points;
-	Text pointsText;
+	public Text pointsText;
 
     private void Start()
     {
