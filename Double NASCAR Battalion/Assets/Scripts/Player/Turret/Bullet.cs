@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+	[Tooltip("How much damage the player takes when hit")]
+	public int m_bulletDamage = 1;
+
 	[Tooltip("Speed of the Bullet")]
 	public float m_bulletSpeed = 50.0f;
 
@@ -16,19 +19,15 @@ public class Bullet : MonoBehaviour
 
 	Vector3 m_distanceFromPivot;
 
-	bool m_reset = false;
-
 	[HideInInspector]
 	public bool m_fired = false;
 
 	Transform m_ammoPool;
-	//[Tooltip("The turret that the ammo will be shot from \n" +
-	//	"Note: This will be used at a later time as need to " +
-	//	"find out how to get certain turrets for each player")]
+
 	[HideInInspector]
 	public Transform m_turret;
 	[HideInInspector]
-	public Collider m_player;
+	public PlayerController m_player;
 	[HideInInspector]
 	public Collider m_collider;
 
@@ -51,26 +50,6 @@ public class Bullet : MonoBehaviour
 		m_rb.velocity = m_turret.forward * m_bulletSpeed;
 	}
 
-	//void Update()
-	//{
-
-	//	if (m_reset)
-	//	{
-	//		transform.position = m_turret.position + m_spawnDistanceFromTurretPivot + (m_turret.forward * 5.75f);
-	//		m_reset = false;
-	//	}
-	//	if(gameObject.activeSelf)
-	//	{
-	//		transform.rotation = Quaternion.LookRotation(m_rb.velocity);
-	//		m_rb.velocity = m_turret.forward * m_bulletSpeed;
-	//	}
-	//}
-
-	//void OnDisable()
-	//{
-	//	m_reset = true;
-	//}
-
 	void OnCollisionEnter(Collision other)
 	{
 		if(other.gameObject.tag == "Bullet")
@@ -79,8 +58,8 @@ public class Bullet : MonoBehaviour
 		}
 		if(other.gameObject.tag == "Player" && other.gameObject != m_player.gameObject)
 		{
-			other.gameObject.SetActive(false);
 			gameObject.SetActive(false);
+			other.gameObject.GetComponent<PlayerController>().health -= m_bulletDamage;
 		}
 		gameObject.SetActive(false);
 	}
